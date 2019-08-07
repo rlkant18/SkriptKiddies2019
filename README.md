@@ -2,4 +2,6 @@
 Repo for the American Express Summer Intern Hackathon
 
 
-start the react-native server using react-native start --reset-cache then start the actual application from xcode or android studio
+## HOW TO RUN
+1. Start the react-native server using `react-native start --reset-cache`
+2. Start the actual application from xcode or android studio
