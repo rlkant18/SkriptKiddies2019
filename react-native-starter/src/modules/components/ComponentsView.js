@@ -28,7 +28,8 @@ export default function ComponentsScreen(props) {
             style={styles.demoButton}
             action
             caption="Edit"
-            bgColor="#2E77BB"
+            bgColor="transparent"
+            color="#2E77BB"
             onPress={() => {}}
           />
         </View>
@@ -68,7 +69,7 @@ export default function ComponentsScreen(props) {
       <View style={styles.cartSection}>
         <Text style={styles.componentSectionHeader}>Cart</Text>
         <ScrollView>
-          <List cart={[{name: 'Burger', price: 100}]} />
+          <List cart={[{name: 'Burger', priceInt: 100}]} />
         </ScrollView>
       </View>
 
