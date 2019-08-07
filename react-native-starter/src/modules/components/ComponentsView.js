@@ -357,6 +357,7 @@ const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 20,
     borderRadius: 5,
+    textAlign: 'center',
   },
   componentSectionHeader: {
     fontFamily: fonts.primaryRegular,

@@ -43,6 +43,8 @@ class RNSDropDown extends React.Component {
         onDropdownWillHide={this._closeModal}
         dropdownStyle={{
           shadowColor: '#000000',
+          width: 200,
+          marginLeft: 88,
           shadowOffset: {
             width: 0,
             height: 3,

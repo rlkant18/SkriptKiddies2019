@@ -74,14 +74,16 @@ class GridsScreen extends React.Component {
 
   _openArticle = article => {
     this.setModalVisible(true)
-    this.props.addItemToCart(this.listData)
+    this.props.addItemToCart(this.listData[0])
   };
 
   componentDidMount() {
     this.props.addItemsToState(this.listData)
+
   }
 
   renderRowOne = rowData => {
+    // console.error(JSON.stringify(rowData))
     const cellViews = rowData.item.map(item => (
       <TouchableOpacity key={item.id} onPress={() => this._openArticle(item)}>
         <View style={styles.itemOneContainer}>
@@ -119,10 +121,10 @@ class GridsScreen extends React.Component {
     } = this.props
     const groupedData =
       this.props.tabIndex === 0
-        ? GridRow.groupByRows(this.props.items, 2)
-        : this.props.items;
-    if (this.state.modalVisible) return <FoodModal onCancel={(visible) => this.setModalVisible(visible)}/>
-    // console.error(this.props.items)
+        ? GridRow.groupByRows(items, 2)
+        : items;
+    if (this.state.modalVisible) return <FoodModal item={this.item} onCancel={(visible) => this.setModalVisible(visible)}/>
+    // console.error(items)
     return (
       <View style={styles.container}>
         <View style={{ height: 50 }}>
