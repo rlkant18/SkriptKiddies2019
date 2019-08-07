@@ -49,7 +49,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
           <View style={styles.priceContainer}>
             <View style={{ flexDirection: 'row' }}>
               <Text white bold size={50} style={styles.price}>
-                {isExtended ? '$199.95' : '$49.95'}
+                {!isExtended ? '$11685' : '$3,097,483'}
               </Text>
             </View>
             <TouchableOpacity
@@ -59,9 +59,9 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
               }
             >
               <Text white size={14}>
-                {isExtended
-                  ? 'Multiple Applications License'
-                  : 'Single Application License'}
+                {!isExtended
+                  ? 'Saved per day'
+                  : 'Saved per annum'}
               </Text>
             </TouchableOpacity>
           </View>

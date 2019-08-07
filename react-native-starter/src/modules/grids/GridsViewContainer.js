@@ -40,6 +40,6 @@ const listData = [
 
 export default compose(
   withState('tabIndex', 'setTabIndex', 0),
-  withState('tabs', 'setTabs', ['List 1']),
+  withState('tabs', 'setTabs', ['Available Items']),
   withState('data', 'setData', listData),
 )(GridView);

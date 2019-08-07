@@ -24,7 +24,7 @@ const stackNavigator = createStackNavigator(
     Main: {
       screen: MainTabNavigator,
       navigationOptions: () => ({
-        title: 'Nutrient Delivery System',
+        title: 'AMEX Ordering',
         headerLeft: null,
         headerBackground: (
           <Image
