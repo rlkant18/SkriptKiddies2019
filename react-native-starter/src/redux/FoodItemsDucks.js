@@ -18,7 +18,7 @@ export default function reducer(state = intialState, action) {
     switch (action.type) {
         case ACTIONS.ADD_ITEM_TO_CART:
             return {...state,
-                cart: action.item
+                cart: [...state.cart, action.item]
             }
         case ACTIONS.ADD_ITEM_TO_STATE:
             return {...state,

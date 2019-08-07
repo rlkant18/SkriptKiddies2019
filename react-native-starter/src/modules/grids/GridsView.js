@@ -18,7 +18,7 @@ import { addItemsToState, addItemToCart } from '../../redux/FoodItemsDucks';
 import { getItems } from '../selector';
 
 import { RadioGroup, GridRow } from '../../components';
-
+console.disableYellowBox = true;
 class GridsScreen extends React.Component {
   listData = [
     {
@@ -27,6 +27,7 @@ class GridsScreen extends React.Component {
       title: 'Grilled Chicken Sandwich',
       subtitle: '200 Calories',
       price: '$4.85',
+      priceInt: 4.85,
       badge: 'NEW',
       badgeColor: '#3cd39f',
       image:
@@ -38,6 +39,7 @@ class GridsScreen extends React.Component {
       title: 'Grilled Salmon',
       subtitle: '260 Calories',
       price: '$5.99',
+      priceInt: 4.85,
       badge: 'NEW',
       badgeColor: '#3cd39f',
       image:
@@ -49,6 +51,7 @@ class GridsScreen extends React.Component {
       title: 'Grilled Salmon Meal',
       subtitle: '415 Calories',
       price: '$7.99',
+      priceInt: 4.85,
       badge: 'NEW',
       badgeColor: '#3cd39f',
       image:
@@ -62,6 +65,8 @@ class GridsScreen extends React.Component {
     this.state = {
       modalVisible: false
     }
+
+    this.item = {}
   }
   _getRenderItemFunction = () =>
     [this.renderRowOne,this.renderRowTwo,this.renderRowThree][
@@ -72,16 +77,19 @@ class GridsScreen extends React.Component {
     this.setState({modalVisible: visible});
   }
 
-  _openArticle = article => {
+  _openArticle = item => {
+    // console.error(item, 'hello')
+    this.item = item
     this.setModalVisible(true)
-    this.props.addItemToCart(this.listData)
   };
 
   componentDidMount() {
     this.props.addItemsToState(this.listData)
+
   }
 
   renderRowOne = rowData => {
+    // console.error(JSON.stringify(rowData))
     const cellViews = rowData.item.map(item => (
       <TouchableOpacity key={item.id} onPress={() => this._openArticle(item)}>
         <View style={styles.itemOneContainer}>
@@ -112,20 +120,30 @@ class GridsScreen extends React.Component {
       </View>
     );
   };
-
+  
   render() {
     const {
       items
     } = this.props
     const groupedData =
       this.props.tabIndex === 0
-        ? GridRow.groupByRows(this.props.items, 2)
-        : this.props.items;
-    if (this.state.modalVisible) return <FoodModal onCancel={(visible) => this.setModalVisible(visible)}/>
-    // console.error(this.props.items)
+        ? GridRow.groupByRows(items, 2)
+        : items;
+    if (this.state.modalVisible) return (
+    <FoodModal 
+      item={this.item}
+      onCancel={(visible) => this.setModalVisible(visible)}
+      onSubmit={() => {
+        this.setModalVisible(false)
+        this.props.addItemToCart(this.item)
+      }
+      }
+    />
+    )
+    // console.error(items)
     return (
       <View style={styles.container}>
-        <View style={{ height: 50 }}>
+        <View style={{ height: 50, flex: .2 }}>
           <RadioGroup
             selectedIndex={this.props.tabIndex}
             items={this.props.tabs}
@@ -139,7 +157,7 @@ class GridsScreen extends React.Component {
               ? `${this.props.tabIndex}-${item.id}`
               : `${item[0] && item[0].id}`
           }
-          style={{ backgroundColor: colors.white, paddingHorizontal: 15 }}
+          style={{ backgroundColor: colors.white, paddingHorizontal: 15, flex: 1 }}
           data={groupedData}
           renderItem={this._getRenderItemFunction()}
         />
