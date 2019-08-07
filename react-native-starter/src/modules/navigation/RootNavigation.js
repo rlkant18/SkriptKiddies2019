@@ -24,7 +24,7 @@ const stackNavigator = createStackNavigator(
     Main: {
       screen: MainTabNavigator,
       navigationOptions: () => ({
-        title: 'React Native Starter',
+        title: 'Nutrient Delivery System',
         headerLeft: null,
         headerBackground: (
           <Image

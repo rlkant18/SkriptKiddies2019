@@ -35,17 +35,16 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         </View>
         <View style={styles.section}>
           <Text color="#19e7f7" size={15}>
-            The smartest Way to build your mobile app
+            The smartest way to order your food
           </Text>
           <Text size={30} bold white style={styles.title}>
-            React Native Starter
+            AMEX Systopia 2.0
           </Text>
         </View>
         <View style={[styles.section, styles.sectionLarge]}>
           <Text color="#19e7f7" hCenter size={15} style={styles.description}>
             {' '}
-            A powerful starter project that bootstraps development of your
-            mobile application and saves you $20 000*
+            Order now to experience the new and improved AMEX ordering system
           </Text>
           <View style={styles.priceContainer}>
             <View style={{ flexDirection: 'row' }}>

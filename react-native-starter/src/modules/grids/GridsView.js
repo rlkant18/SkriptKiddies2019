@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   StyleSheet,
+  Alert,
   View,
   Platform,
   Text,
@@ -9,21 +10,19 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { colors, fonts } from '../../styles';
 
 import { RadioGroup, GridRow } from '../../components';
 
 export default class GridsScreen extends React.Component {
   _getRenderItemFunction = () =>
-    [this.renderRowOne, this.renderRowTwo, this.renderRowThree][
+    [this.renderRowOne,this.renderRowTwo,this.renderRowThree][
       this.props.tabIndex
     ];
 
   _openArticle = article => {
-    this.props.navigation.navigate({
-      routeName: 'Article',
-      params: { ...article },
-    });
+    Alert.alert('Added to cart!')
   };
 
   renderRowOne = rowData => {
@@ -287,3 +286,16 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
 });
+
+const mapStateToProps = (state) => {
+  // selectors
+
+  return { };
+};
+
+const mapDispatchToProps = {
+  // actions
+};
+
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Election);
