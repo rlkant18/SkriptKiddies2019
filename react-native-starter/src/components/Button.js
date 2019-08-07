@@ -108,6 +108,7 @@ export default function RNSButton(props) {
               props.small && styles.captionSmall,
               icon && styles.captionWithIcon,
               styles.primaryCaption,
+              {color: props.color || 'white'}
             ]}
           >
             {caption}
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
   },
   caption: {
     letterSpacing: 1,
-    fontSize: 15,
+    fontSize: 12,
     fontFamily: fonts.primaryBold,
   },
   captionSmall: {
