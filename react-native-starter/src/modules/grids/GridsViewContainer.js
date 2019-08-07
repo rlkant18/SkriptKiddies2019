@@ -2,7 +2,7 @@ import { compose, withState } from 'recompose';
 
 import GridView from './GridsView';
 
-const listData = [
+export const listData = [
   {
     id: 1,
     brand: 'Citizen',
@@ -12,7 +12,7 @@ const listData = [
     badge: 'NEW',
     badgeColor: '#3cd39f',
     image:
-      'https://reactnativestarter.com/demo/images/city-sunny-people-street.jpg',
+      'https://images-gmi-pmc.edge-generalmills.com/6f2bed86-48ec-411b-ad9f-6d77fa8086e6.jpg',
   },
   {
     id: 2,

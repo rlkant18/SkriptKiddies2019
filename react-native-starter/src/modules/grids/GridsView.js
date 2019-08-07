@@ -9,21 +9,77 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  ScrollView
 } from 'react-native';
 import { connect } from 'react-redux';
 import { colors, fonts } from '../../styles';
+import FoodModal from '../components/FoodModal';
+import { addItemsToState, addItemToCart } from '../../redux/FoodItemsDucks';
+import { getItems } from '../selector';
 
 import { RadioGroup, GridRow } from '../../components';
 
-export default class GridsScreen extends React.Component {
+class GridsScreen extends React.Component {
+  listData = [
+    {
+      id: 1,
+      brand: 'Citizen',
+      title: 'Grilled Chicken Sandwich',
+      subtitle: '200 Calories',
+      price: '$4.85',
+      badge: 'NEW',
+      badgeColor: '#3cd39f',
+      image:
+        'https://www.sixsistersstuff.com/wp-content/uploads/2013/09/Chicken-Sandwich-main-shot-1-of-1-683x1024.jpg',
+    },
+    {
+      id: 2,
+      brand: 'Citizen',
+      title: 'Grilled Salmon',
+      subtitle: '260 Calories',
+      price: '$5.99',
+      badge: 'NEW',
+      badgeColor: '#3cd39f',
+      image:
+        'https://www.foodiecrush.com/wp-content/uploads/2019/05/Grilled-Salmon-foodiecrush.com-023.jpg',
+    },
+    {
+      id: 3,
+      brand: 'Citizen',
+      title: 'Grilled Salmon Meal',
+      subtitle: '415 Calories',
+      price: '$7.99',
+      badge: 'NEW',
+      badgeColor: '#3cd39f',
+      image:
+        'https://www.cookingclassy.com/wp-content/uploads/2016/09/grilled_salmon_avocado_greek_salsa4crop..jpg',
+    },
+  ];
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      modalVisible: false
+    }
+  }
   _getRenderItemFunction = () =>
     [this.renderRowOne,this.renderRowTwo,this.renderRowThree][
       this.props.tabIndex
     ];
 
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   _openArticle = article => {
-    Alert.alert('Added to cart!')
+    this.setModalVisible(true)
+    this.props.addItemToCart(this.listData)
   };
+
+  componentDidMount() {
+    this.props.addItemsToState(this.listData)
+  }
 
   renderRowOne = rowData => {
     const cellViews = rowData.item.map(item => (
@@ -57,68 +113,16 @@ export default class GridsScreen extends React.Component {
     );
   };
 
-  renderRowTwo = ({ item }) => (
-    <TouchableOpacity
-      key={item.id}
-      style={styles.itemTwoContainer}
-      onPress={() => this._openArticle(item)}
-    >
-      <View style={styles.itemTwoContent}>
-        <Image style={styles.itemTwoImage} source={{ uri: item.image }} />
-        <View style={styles.itemTwoOverlay} />
-        <Text style={styles.itemTwoTitle}>{item.title}</Text>
-        <Text style={styles.itemTwoSubTitle}>{item.subtitle}</Text>
-        <Text style={styles.itemTwoPrice}>{item.price}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-
-  renderRowThree = ({ item }) => (
-    <TouchableOpacity
-      key={item.id}
-      style={styles.itemThreeContainer}
-      onPress={() => this._openArticle(item)}
-    >
-      <View style={styles.itemThreeSubContainer}>
-        <Image source={{ uri: item.image }} style={styles.itemThreeImage} />
-        <View style={styles.itemThreeContent}>
-          <Text style={styles.itemThreeBrand}>{item.brand}</Text>
-          <View>
-            <Text style={styles.itemThreeTitle}>{item.title}</Text>
-            <Text style={styles.itemThreeSubtitle} numberOfLines={1}>
-              {item.subtitle}
-            </Text>
-          </View>
-          <View style={styles.itemThreeMetaContainer}>
-            {item.badge && (
-              <View
-                style={[
-                  styles.badge,
-                  item.badge === 'NEW' && { backgroundColor: colors.green },
-                ]}
-              >
-                <Text
-                  style={{ fontSize: 10, color: colors.white }}
-                  styleName="bright"
-                >
-                  {item.badge}
-                </Text>
-              </View>
-            )}
-            <Text style={styles.itemThreePrice}>{item.price}</Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.itemThreeHr} />
-    </TouchableOpacity>
-  );
-
   render() {
+    const {
+      items
+    } = this.props
     const groupedData =
       this.props.tabIndex === 0
-        ? GridRow.groupByRows(this.props.data, 2)
-        : this.props.data;
-
+        ? GridRow.groupByRows(this.props.items, 2)
+        : this.props.items;
+    if (this.state.modalVisible) return <FoodModal onCancel={(visible) => this.setModalVisible(visible)}/>
+    // console.error(this.props.items)
     return (
       <View style={styles.container}>
         <View style={{ height: 50 }}>
@@ -287,15 +291,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
   // selectors
-
-  return { };
-};
+  items: getItems(state),
+});
 
 const mapDispatchToProps = {
+  addItemsToState,
+  addItemToCart,
   // actions
 };
 
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Election);
+export default connect(mapStateToProps, mapDispatchToProps)(GridsScreen);
