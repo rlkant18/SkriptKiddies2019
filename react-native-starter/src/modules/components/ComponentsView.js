@@ -5,16 +5,38 @@ import Icon from 'react-native-vector-icons/Entypo';
 import { colors, fonts } from '../../styles';
 
 import { Button, RadioGroup, Dropdown } from '../../components';
+import UserInfo from '../../components/UserInfo';
+import List from "../checkout/List";
+
+const uInfo = {
+  name: "John Doe",
+  location: "Amex-Sunrise",
+  time: "The Right Moment"
+}
 
 export default function ComponentsScreen(props) {
   return (
-    <ScrollView
+    <View
       style={styles.container}
       contentContainerStyle={{ paddingBottom: 20 }}
     >
       <View style={styles.componentsSection}>
-        <Text style={styles.componentSectionHeader}>Radio Group</Text>
+         
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={styles.componentSectionHeader}>Order Info</Text>
+          <Button
+            style={styles.demoButton}
+            action
+            caption="Edit"
+            bgColor="#2E77BB"
+            onPress={() => {}}
+          />
+        </View>
+        <View>
+          <UserInfo info={uInfo} /> 
+        </View>
 
+        {/* 
         <RadioGroup
           style={styles.demoItem}
           items={['One', 'Two', 'Three']}
@@ -40,73 +62,17 @@ export default function ComponentsScreen(props) {
           onChange={index =>
             props.setRadioGroupsState({ ...props.radioGroupsState, 1: index })
           }
-        />
+        /> */}
       </View>
 
-      <View style={styles.componentsSection}>
-        <Text style={styles.componentSectionHeader}>Buttons</Text>
-
-        <View style={styles.demoButtonsContainer}>
-          <Button
-            style={styles.demoButton}
-            primary
-            caption="Button"
-            onPress={() => {}}
-          />
-          <Button
-            style={styles.demoButton}
-            secondary
-            caption="Button"
-            onPress={() => {}}
-          />
-          <Button
-            style={styles.demoButton}
-            primary
-            rounded
-            caption="Button"
-            onPress={() => {}}
-          />
-          <Button
-            style={styles.demoButton}
-            secondary
-            rounded
-            caption="Button"
-            onPress={() => {}}
-          />
-          <Button
-            style={styles.demoButton}
-            primary
-            bordered
-            caption="Button"
-            onPress={() => {}}
-          />
-          <Button
-            style={styles.demoButton}
-            secondary
-            bordered
-            caption="Button"
-            onPress={() => {}}
-          />
-          <Button
-            style={styles.demoButton}
-            primary
-            bordered
-            rounded
-            caption="Button"
-            onPress={() => {}}
-          />
-          <Button
-            style={styles.demoButton}
-            secondary
-            bordered
-            rounded
-            caption="Button"
-            onPress={() => {}}
-          />
-        </View>
+      <View style={styles.cartSection}>
+        <Text style={styles.componentSectionHeader}>Cart</Text>
+        <ScrollView>
+          <List cart={[{name: 'Burger', price: 100}]} />
+        </ScrollView>
       </View>
 
-      <View style={styles.componentsSection}>
+      {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Action Buttons</Text>
 
         <View style={styles.demoButtonsContainer}>
@@ -171,9 +137,9 @@ export default function ComponentsScreen(props) {
             </Text>
           </Button>
         </View>
-      </View>
+      </View> */}
 
-      <View style={styles.componentsSection}>
+      {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Icons</Text>
 
         <View style={styles.demoIconsContainer}>
@@ -330,9 +296,9 @@ export default function ComponentsScreen(props) {
           bordered
           caption="More Icons"
         />
-      </View>
+      </View> */}
 
-      <View style={styles.componentsSection}>
+      {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Dropdown</Text>
 
         <Dropdown
@@ -340,8 +306,8 @@ export default function ComponentsScreen(props) {
           onSelect={() => {}}
           items={['option 1', 'option 2']}
         />
-      </View>
-    </ScrollView>
+      </View> */}
+    </View>
   );
 }
 
@@ -358,6 +324,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 5,
     textAlign: 'center',
+  },
+  cartSection: {
+    backgroundColor: colors.white,
+    padding: 15,
+    marginBottom: 20,
+    borderRadius: 5,
+    height: '50%'
   },
   componentSectionHeader: {
     fontFamily: fonts.primaryRegular,
@@ -381,8 +354,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   demoButton: {
-    marginTop: 8,
-    marginBottom: 8,
+    fontSize:5
   },
   demoItem: {
     marginVertical: 15,
