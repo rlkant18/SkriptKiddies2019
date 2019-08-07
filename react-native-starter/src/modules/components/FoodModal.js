@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, StyleSheet, Text, TouchableHighlight, View, Alert} from 'react-native';
+import {Image, Modal, StyleSheet, Text, TouchableHighlight, View, Alert} from 'react-native';
 import { Button, RadioGroup, Dropdown } from '../../components';
 
 export default class FoodModal extends Component {
@@ -10,6 +10,14 @@ export default class FoodModal extends Component {
       container,
       containerOuter
     } = styles;
+    // console.error(this.props.items)
+
+    const {
+      title,
+      subtitle,
+      price,
+      image,
+    } = this.props.item
     return (
       <Modal
         animationType="slide"
@@ -21,7 +29,9 @@ export default class FoodModal extends Component {
         <View style={containerOuter}>
           <View style={container}>
             <View style = {{flex: .9, marginTop: 10}}>
-              <Text style={{fontSize: 20, marginBottom: 20, textAlign: 'center'}}>Select your quantity:</Text>
+              <Text style={{fontSize: 20, marginBottom: 20, textAlign: 'center'}}>{title}</Text>
+              <Image style={{width: 100, height: 100, alignSelf: 'center', borderRadius: 10, marginBottom: 20}} source={{uri: image}}></Image>
+              <Text style={{fontSize: 15, marginBottom: 20, textAlign: 'center'}}>Select your quantity:</Text>
 
               <Dropdown
                 style={{ width: 200, alignSelf: 'center' }}
@@ -72,6 +82,6 @@ const styles = StyleSheet.create({
   },
   demoButton: {
     flex: 1,
-    marginTop: 2,
+    margin: 2,
   },
 });
