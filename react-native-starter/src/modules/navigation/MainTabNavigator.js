@@ -11,6 +11,7 @@ import GridsScreen from '../grids/GridsViewContainer';
 import PagesScreen from '../pages/PagesViewContainer';
 import ComponentsScreen from '../components/ComponentsViewContainer';
 import Login from '../../containers/Login';
+import ForgotPassword from '../../containers/ForgotPassword';
 
 const iconHome = require('../../../assets/images/tabbar/home.png');
 const iconCalendar = require('../../../assets/images/tabbar/calendar.png');
@@ -120,7 +121,19 @@ export default createBottomTabNavigator(
           </View>
         ),
       },
-    }
+    },
+    ForgotPassword: {
+      screen: ForgotPassword,
+      navigationOptions: {
+        header: (
+          <View style={styles.headerContainer}>
+            <Image style={styles.headerImage} source={hederBackground} />
+            <Text style={styles.headerCaption}>Components</Text>
+          </View>
+        ),
+      },
+    },
+    
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

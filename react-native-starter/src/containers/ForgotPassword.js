@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 import { TextInput } from '../components';
 
 
-class Login extends Component {
+class ForgotPassword extends Component {
     constructor(props) {
         super(props);
         this.state = { UserNameText: 'Cafe Rewards Card Number or Email' };
@@ -11,6 +11,7 @@ class Login extends Component {
     }
 
     render() { 
+        
         const {
             navigate
         }=this.props.navigation
@@ -24,27 +25,19 @@ class Login extends Component {
               style={styles.demoButton}
               secondary
               rounded
-              title="Log In"
-              caption="Checkout" 
-            />
-            <Button
-              onPress={() => navigate('ForgotPassword')}
-              style={styles.demoButton}
-              secondary
-              rounded
-              title="Forgotten Password"
-              caption="Checkout" 
+              title="Reset Password"
+              caption="Reset Password" 
             />
           </View>
            );
         }
     }
-export default Login;
+export default ForgotPassword;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center'
-
+        
     }   
 }) 

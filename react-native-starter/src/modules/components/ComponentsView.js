@@ -51,34 +51,6 @@ class ComponentsScreen extends Component {
           <View>
             <UserInfo info={uInfo} /> 
           </View>
-
-          {/* 
-        <RadioGroup
-          style={styles.demoItem}
-          items={['One', 'Two', 'Three']}
-          selectedIndex={props.radioGroupsState[0]}
-          onChange={index =>
-            props.setRadioGroupsState({ ...props.radioGroupsState, 0: index })
-          }
-        />
-
-        <View
-          style={{
-            height: 1,
-            alignSelf: 'stretch',
-            backgroundColor: colors.bluish,
-          }}
-        />
-
-        <RadioGroup
-          underline
-          style={styles.demoItem}
-          items={['One', 'Two', 'Tree', 'Four']}
-          selectedIndex={props.radioGroupsState[1]}
-          onChange={index =>
-            props.setRadioGroupsState({ ...props.radioGroupsState, 1: index })
-          }
-        /> */}
         </View>
 
         <View style={styles.cartSection}>
@@ -86,8 +58,14 @@ class ComponentsScreen extends Component {
           <ScrollView>
             <List cart={cart} />
           </ScrollView>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{paddingTop: 15}}>Total</Text>
+            <Text style={{paddingTop: 15}}>Total</Text>
+          </View>
         </View>
-        <Button />
+        <Button 
+          caption='Purchase'
+        />
         {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Action Buttons</Text>
 
@@ -347,7 +325,7 @@ const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 20,
     borderRadius: 5,
-    height: '50%'
+    height: '60%'
   },
   componentSectionHeader: {
     fontFamily: fonts.primaryRegular,
