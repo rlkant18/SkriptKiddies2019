@@ -65,6 +65,6 @@ export default function CalendarStateReducer(state = defaultState, action) {
         items: action.items,
       });
     default:
-      return defaultState;
+      return state;
   }
 }

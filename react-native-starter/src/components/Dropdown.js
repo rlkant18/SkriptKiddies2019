@@ -25,6 +25,20 @@ class RNSDropDown extends React.Component {
   _closeModal = () => {
     this.setState({ isOpened: false });
   };
+  
+  shouldComponentUpdate(nextProps){
+    const {
+      items,
+      color,
+      onSelect,
+      style,
+      borderColor,
+      selectedIndex,
+      placeholder,
+    } = this.props;
+
+    return true
+  }
 
   render() {
     const {
@@ -35,7 +49,9 @@ class RNSDropDown extends React.Component {
       borderColor,
       selectedIndex,
       placeholder,
+      value
     } = this.props;
+
     return (
       <ModalDropdown
         options={items}
@@ -64,13 +80,14 @@ class RNSDropDown extends React.Component {
             <Text style={{ color }}>{text}</Text>
           </View>
         )}
-        onSelect={onSelect(items[selectedIndex])}
+        onSelect={(index, value) => {
+          this.forceUpdate();
+          onSelect(index, value)
+        }}
       >
         <View style={[styles.container, style && style, { borderColor }]}>
           <Text style={{ color }}>
-            {selectedIndex > -1 && items[selectedIndex]
-              ? items[selectedIndex]
-              : placeholder}
+            {value}
           </Text>
           <Icon
             name={this.state.isOpened ? 'angle-up' : 'angle-down'}

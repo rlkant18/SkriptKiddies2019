@@ -7,10 +7,13 @@ export default class FoodModal extends Component {
   constructor(props) {
     super(props)
 
-    this.quantity
+    this.quantity = 1
+    this.selectedIndex = 0;
   }
 
-  onSelect = (value) => {
+  onSelect = (index, value) => {
+    this.forceUpdate()
+    this.selectedIndex = index;
     this.quantity = value;
   }
   
@@ -45,8 +48,10 @@ export default class FoodModal extends Component {
 
               <Dropdown
                 style={{ width: 200, alignSelf: 'center' }}
-                onSelect={() => this.onSelect}
+                onSelect={(index, value) => this.onSelect(index, value)}
                 items={['1', '2', '3', '4', '5']}
+                selectedIndex={this.selectedIndex}
+                value={this.quantity}
               />
             </View>
 

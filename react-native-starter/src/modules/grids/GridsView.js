@@ -171,7 +171,7 @@ class GridsScreen extends React.Component {
           renderItem={this._getRenderItemFunction()}
         />
         <Button
-          onPress={() => navigate('Components')}
+          onPress={() => navigate('Checkout')}
           style={styles.demoButton}
           secondary
           rounded
