@@ -19,8 +19,7 @@ class Login extends Component {
         
         return ( 
           
-          <View style={StyleSheet}> 
-            <Image source={require('../../assets/images/amex.jpg')} />   
+          <View style={StyleSheet}>  
             <TextInput type="bordered" value={this.state.UserNameText} onChangeText={(text) => this.setState({UserNameText: text})} />
             <TextInput type="bordered" value={this.state.UserPassword} onChangeText={(text) => this.setState({UserPassword: text})} />
             <Button

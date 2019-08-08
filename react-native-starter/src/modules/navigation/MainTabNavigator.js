@@ -12,6 +12,7 @@ import PagesScreen from '../pages/PagesViewContainer';
 import ComponentsScreen from '../components/ComponentsViewContainer';
 import Login from '../../containers/Login';
 import ForgotPassword from '../../containers/ForgotPassword';
+import AvailableInFullVersionView from "../availableInFullVersion/AvailableInFullVersionView"
 
 const iconHome = require('../../../assets/images/tabbar/home.png');
 const iconCalendar = require('../../../assets/images/tabbar/calendar.png');
@@ -67,17 +68,6 @@ export default createBottomTabNavigator(
         header: null,
       },
     },
-    Calendar: {
-      screen: CalendarScreen,
-      navigationOptions: {
-        header: (
-          <View style={styles.headerContainer}>
-            <Image style={styles.headerImage} source={hederBackground} />
-            <Text style={styles.headerCaption}>Calendar</Text>
-          </View>
-        ),
-      },
-    },
     Menu: {
       screen: GridsScreen,
       navigationOptions: {
@@ -89,19 +79,30 @@ export default createBottomTabNavigator(
         ),
       },
     },
-    Pages: {
-      screen: PagesScreen,
+    Calendar: {
+      screen: CalendarScreen,
       navigationOptions: {
         header: (
           <View style={styles.headerContainer}>
             <Image style={styles.headerImage} source={hederBackground} />
-            <Text style={styles.headerCaption}>Pages</Text>
+            <Text style={styles.headerCaption}>Calendar</Text>
           </View>
         ),
       },
     },
-    Checkout: {
-      screen: ComponentsScreen,
+    // Pages: {
+    //   screen: PagesScreen,
+    //   navigationOptions: {
+    //     header: (
+    //       <View style={styles.headerContainer}>
+    //         <Image style={styles.headerImage} source={hederBackground} />
+    //         <Text style={styles.headerCaption}>Pages</Text>
+    //       </View>
+    //     ),
+    //   },
+    // },
+    Login: {
+      screen: Login,
       navigationOptions: {
         header: (
           <View style={styles.headerContainer}>
@@ -111,8 +112,19 @@ export default createBottomTabNavigator(
         ),
       },
     },
-    Login: {
-      screen: Login,
+    Profile: {
+      screen: AvailableInFullVersionView,
+      navigationOptions: {
+        header: (
+          <View style={styles.headerContainer}>
+            <Image style={styles.headerImage} source={hederBackground} />
+            <Text style={styles.headerCaption}>Components</Text>
+          </View>
+        ),
+      },
+    },
+    Checkout: {
+      screen: ComponentsScreen,
       navigationOptions: {
         header: (
           <View style={styles.headerContainer}>
