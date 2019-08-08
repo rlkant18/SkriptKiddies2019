@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Entypo';
@@ -8,27 +8,24 @@ import { colors, fonts } from '../../styles';
 
 import { Button, RadioGroup, Dropdown } from '../../components';
 import UserInfo from '../../components/UserInfo';
-import List from "../checkout/List";
+import List from '../checkout/List';
 
 const uInfo = {
-  name: "John Doe",
-  location: "Amex-Sunrise",
-  time: "12:15 PM"
-}
-
-
+  name: 'John Doe',
+  location: 'Amex-Sunrise',
+  time: '12:15 PM',
+};
 
 class ComponentsScreen extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
 
-state = {};
+  state = {};
 
-ponentWillMount(){
-    console.log(this.props)
+  ponentWillMount() {
+    console.log(this.props);
   }
 
   render() {
@@ -39,20 +36,21 @@ ponentWillMount(){
         contentContainerStyle={{ paddingBottom: 20 }}
       >
         <View style={styles.componentsSection}>
-         
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View
+            style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+          >
             <Text style={styles.componentSectionHeader}>Order Info</Text>
             <Button
               style={styles.demoButton}
               action
               caption="Edit"
               bgColor="transparent"
-              color="#2E77BB"
+              color="#fff"
               onPress={() => {}}
             />
           </View>
           <View>
-            <UserInfo info={uInfo} /> 
+            <UserInfo info={uInfo} />
           </View>
         </View>
 
@@ -61,15 +59,28 @@ ponentWillMount(){
           <ScrollView>
             <List cart={cart} />
           </ScrollView>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={[styles.componentSectionHeader,{paddingTop: 15, marginBottom: -5}]}>Total</Text>
-            <Text style={[styles.componentSectionHeader,{paddingTop: 15, marginBottom: -5}]}>${total.toFixed(2)}</Text>
+          <View
+            style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+          >
+            <Text
+              style={[
+                styles.componentSectionHeader,
+                { paddingTop: 15, marginBottom: -5 },
+              ]}
+            >
+              Total
+            </Text>
+            <Text
+              style={[
+                styles.componentSectionHeader,
+                { paddingTop: 15, marginBottom: -5 },
+              ]}
+            >
+              ${total.toFixed(2)}
+            </Text>
           </View>
         </View>
-        <Button 
-          caption='Purchase'
-          bgColor="#2E77BB"
-        />
+        <Button caption="Purchase" bgColor="#2E77BB" />
         {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Action Buttons</Text>
 
@@ -306,7 +317,7 @@ ponentWillMount(){
         />
       </View> */}
       </View>
-    )
+    );
   }
 }
 
@@ -329,7 +340,7 @@ const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 20,
     borderRadius: 5,
-    height: '60%'
+    height: '60%',
   },
   componentSectionHeader: {
     fontFamily: fonts.primaryRegular,
@@ -353,21 +364,24 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   demoButton: {
-    fontSize:5
+    fontSize: 5,
   },
   demoItem: {
     marginVertical: 15,
   },
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   // selectors
   cart: getCart(state),
-  total: getTotal(state)
+  total: getTotal(state),
 });
 
 const mapDispatchToProps = {
   // actions
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComponentsScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ComponentsScreen);
