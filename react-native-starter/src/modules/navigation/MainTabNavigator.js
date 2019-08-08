@@ -99,7 +99,7 @@ export default createBottomTabNavigator(
         ),
       },
     },
-    Components: {
+    Checkout: {
       screen: ComponentsScreen,
       navigationOptions: {
         header: (

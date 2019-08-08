@@ -20,7 +20,7 @@ const List = (props) => (
               marginBottom: 10,
             }}
           >
-            {item.name}
+            {item.title}
           </Text>
           <Text style={{ color: '#9B9B9B' }}>
             {item.time}

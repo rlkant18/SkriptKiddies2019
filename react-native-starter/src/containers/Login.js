@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
+import { TextInput } from '../components';
 
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {  };
     }
 
     render() { 
-        const { UserName , UserPassword } = this.props.info;
        
         return ( 
           <View>   
-            <Text style={styles.container}> {UserName} </Text>
-            <Text style={styles.container}> {UserPassword} </Text>
+            <TextInput style={styles.container} />
+            <TextInput style={styles.container} />
           </View>
          );
     }
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
     container: {
     padding: 5
     },
-})
+})// // // // // // 

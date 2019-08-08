@@ -18,6 +18,7 @@ import { addItemsToState, addItemToCart } from '../../redux/FoodItemsDucks';
 import { getItems } from '../selector';
 
 import { RadioGroup, GridRow } from '../../components';
+
 console.disableYellowBox = true;
 class GridsScreen extends React.Component {
   listData = [
@@ -68,6 +69,7 @@ class GridsScreen extends React.Component {
 
     this.item = {}
   }
+
   _getRenderItemFunction = () =>
     [this.renderRowOne,this.renderRowTwo,this.renderRowThree][
       this.props.tabIndex
@@ -130,15 +132,15 @@ class GridsScreen extends React.Component {
         ? GridRow.groupByRows(items, 2)
         : items;
     if (this.state.modalVisible) return (
-    <FoodModal 
-      item={this.item}
-      onCancel={(visible) => this.setModalVisible(visible)}
-      onSubmit={() => {
+      <FoodModal 
+        item={this.item}
+        onCancel={(visible) => this.setModalVisible(visible)}
+        onSubmit={() => {
         this.setModalVisible(false)
         this.props.addItemToCart(this.item)
       }
       }
-    />
+      />
     )
     // console.error(items)
     return (
