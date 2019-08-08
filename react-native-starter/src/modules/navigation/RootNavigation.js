@@ -15,6 +15,8 @@ import GalleryScreen from '../gallery/GalleryViewContainer';
 
 import AvailableInFullVersion from '../availableInFullVersion/AvailableInFullVersionViewContainer';
 import Login from '../../containers/Login';
+import ForgotPassword from '../../containers/ForgotPassword';
+
 import { colors, fonts } from '../../styles';
 
 const headerBackground = require('../../../assets/images/topBarBg.png');
@@ -23,6 +25,12 @@ const stackNavigator = createStackNavigator(
   {
     Login: {
       screen: Login,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    ForgotPassword: {
+      screen: ForgotPassword,
       navigationOptions: {
         header: null,
       },

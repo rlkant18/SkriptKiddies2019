@@ -6,6 +6,7 @@ import {
   Button,
   ImageBackground,
   TextInput,
+  Image,
 } from 'react-native';
 
 class Login extends Component {
@@ -25,12 +26,14 @@ class Login extends Component {
         style={{ width: '100%', height: '100%' }}
         source={require('../../assets/images/amex.png')}
       >
-        <View style={{ marginTop: 225 }}>
+        <Text style={styles.titleText}>Amex Café Ordering</Text>
+
+        <View style={{ marginTop: 0 }}>
           <TextInput
             type="bordered"
             style={styles.background}
             // style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-            placeholder="  Cafe Rewards Card Number or Email"
+            placeholder="  Café Rewards Card Number or Email"
             value={this.state.UserNameText}
             onChangeText={text => this.setState({ UserNameText: text })}
           />
@@ -59,6 +62,15 @@ class Login extends Component {
             title="Forgot Password"
             caption="Checkout"
           />
+          <Image
+            style={{
+              width: '100%',
+              height: '15%',
+              alignContent: 'center',
+              marginBottom: '0%',
+            }}
+            source={require('../../assets/images/orderWhite.png')}
+          />
         </View>
       </ImageBackground>
     );
@@ -76,5 +88,19 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 70,
+  },
+  baseText: {
+    fontFamily: 'Cochin',
+  },
+  titleText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#fff',
+    margin: 50,
+    height: '20%',
+    width: '100%',
+    // justifyContent: 'center',
+    // alignItems: 'stretch',
+    // flexDirection: 'row',
   },
 });
