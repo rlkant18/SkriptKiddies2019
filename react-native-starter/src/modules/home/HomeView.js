@@ -4,6 +4,7 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
+  Image,
 } from 'react-native';
 
 import { fonts, colors } from '../../styles';
@@ -37,9 +38,11 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
           <Text color="#19e7f7" size={15}>
             The smartest way to order your food
           </Text>
-          <Text size={30} bold white style={styles.title}>
+          {/* <Text size={30} bold white style={styles.title}>
             AMEX Systopia 2.0
-          </Text>
+          </Text> */}
+          <Image source={require('../../../assets/images/dontOrderWithoutIt.png')} style={{marginTop: 35, flex: 1, height: 200, width: 300, resizeMode: 'contain'}}></Image>
+
         </View>
         <View style={[styles.section, styles.sectionLarge]}>
           <Text color="#19e7f7" hCenter size={15} style={styles.description}>

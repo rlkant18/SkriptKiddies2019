@@ -30,7 +30,7 @@ const stackNavigator = createStackNavigator(
     Main: {
       screen: MainTabNavigator,
       navigationOptions: () => ({
-        title: 'AMEX Ordering',
+        title: 'AMEX Café Experience',
         headerLeft: null,
         headerBackground: (
           <Image

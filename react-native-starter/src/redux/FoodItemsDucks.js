@@ -3,7 +3,9 @@ import { fromJS } from 'immutable';
 
 const ACTIONS = {
     ADD_ITEM_TO_CART: 'ADD_ITEM_TO_CART',
-    ADD_ITEM_TO_STATE: 'ADD_ITEM_TO_STATE'
+    ADD_ITEM_TO_STATE: 'ADD_ITEM_TO_STATE',
+    REMOVE_ITEM_FROM_CART: 'REMOVE_ITEM_FROM_CART',
+
 }
 // export const ACTIONS = createActionTypes([
 //     'ADD_ITEM_TO_CART'
@@ -17,6 +19,12 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case ACTIONS.REMOVE_ITEM_FROM_CART:
+            // console.error('Worked2')
+            // alert(JSON.stringify(state.cart) + 'hello' + JSON.stringify(state.cart.slice(1)))
+            return {...state,
+                cart: state.cart.slice(action.index)
+            }
         case ACTIONS.ADD_ITEM_TO_CART:
             console.log(state.total);
             console.log(action.item.priceInt);
@@ -44,5 +52,13 @@ export function addItemToCart(item) {
     return {
         type: ACTIONS.ADD_ITEM_TO_CART,
         item
+    }
+}
+
+export function removeItemFromCart(index) {
+    // console.error('Worked')
+    return {
+        type: ACTIONS.REMOVE_ITEM_FROM_CART,
+        index
     }
 }

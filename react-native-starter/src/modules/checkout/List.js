@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Table from 'react-native-simple-table';
 import { Button} from '../../components';
+import { removeItemFromCart } from '../../redux/FoodItemsDucks'
 
+format = (number) => {
+  return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
 const List = (props) => (
 //   <React.Fragment>
 //     <View style={{height: '50%', width: '100%', flex: 0, justifyContent: 'center', alignItems: 'center'}}>
@@ -36,7 +41,7 @@ const List = (props) => (
    
 //   </ScrollView>
   <ScrollView contentContainerStyle={[styles.item, {flexDirection:'column'}]}>
-    {props.cart.map((item) => (
+    {props.cart.map((item, index) => (
       <React.Fragment>
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
           <Text
@@ -48,15 +53,15 @@ const List = (props) => (
           >
             {item.title}
           </Text>
-          <Text style={{flex: .2}}>x{item.quantity}</Text>
-          <Text style={{flex:.15}} styleName="horizontal h-start">${`${item.priceInt}`}</Text>
+
+          <Text style={{flex:.15}} styleName="horizontal h-start">${`${format(item.priceInt)}`}</Text>
           <Button
             style={{fontSize: 10, flex: .01}}
             action
             caption="X"
             bgColor="transparent"
             color="red"
-            onPress={() => {}}
+            onPress={() => props.onRemoveItemFromCart(index + 1)}
             small
             cartScreen
           />
@@ -66,8 +71,17 @@ const List = (props) => (
   </ScrollView>
 )
 
+const mapStateToProps = (state) => ({
+  // selectors
+});
 
-export default List;
+export const mapDispatchToProps = {
+  // actions
+  onRemoveItemFromCart: removeItemFromCart,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
 
 // const styles = StyleSheet.create({
 //     containerView: {

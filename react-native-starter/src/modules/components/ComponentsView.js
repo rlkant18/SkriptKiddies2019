@@ -7,6 +7,7 @@ import { getCart, getTotal } from '../selector';
 import { colors, fonts } from '../../styles';
 
 import { Button, RadioGroup, Dropdown } from '../../components';
+import PaymentModal from './PaymentModal'
 import UserInfo from '../../components/UserInfo';
 import List from '../checkout/List';
 
@@ -19,17 +20,35 @@ const uInfo = {
 class ComponentsScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      modalVisible: false,
+    }
   }
 
-  state = {};
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
 
-  ponentWillMount() {
-    console.log(this.props);
+  componentWillMount(){
+    console.log(this.props)
   }
 
   render() {
     const { cart, total } = this.props;
+    if(this.state.modalVisible) return <PaymentModal 
+      onCancel={(visible) => this.setModalVisible(visible)}
+      onSubmit={(form) => {
+        if(form.values.type !== 'american-express'){
+          console.error('Sorry we do not accept inferior cards')
+        }
+        else{
+          this.setModalVisible(false)
+          setTimeout(() => {
+            alert('Purchase has been placed')
+          }, 500)
+        }
+      }}
+    />
     return (
       <View
         style={styles.container}
@@ -80,7 +99,11 @@ class ComponentsScreen extends Component {
             </Text>
           </View>
         </View>
-        <Button caption="Purchase" bgColor="#2E77BB" />
+        <Button 
+          caption='Purchase'
+          onPress={() => this.setModalVisible(true)}
+          bgColor="#2E77BB"
+        />
         {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Action Buttons</Text>
 
