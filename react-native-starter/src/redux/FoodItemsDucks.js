@@ -12,13 +12,17 @@ const ACTIONS = {
 const initialState = {
     items: [],
     cart: [],
+    total: 0
 }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ACTIONS.ADD_ITEM_TO_CART:
+            console.log(state.total);
+            console.log(action.item.priceInt);
             return {...state,
-                cart: [...state.cart, action.item]
+                cart: [...state.cart, action.item],
+                total: state.total + action.item.priceInt
             }
         case ACTIONS.ADD_ITEM_TO_STATE:
             return {...state,

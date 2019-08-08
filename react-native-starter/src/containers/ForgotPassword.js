@@ -19,7 +19,6 @@ class ForgotPassword extends Component {
         return ( 
           <View style={styles.container}>   
             <TextInput type="bordered" value={this.state.UserNameText} onChangeText={(text) => this.setState({UserNameText: text})} />
-            <TextInput type="bordered" value={this.state.UserPassword} onChangeText={(text) => this.setState({UserPassword: text})} />
             <Button
               onPress={() => navigate('Home')}
               style={styles.demoButton}

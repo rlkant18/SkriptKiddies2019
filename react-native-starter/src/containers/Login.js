@@ -16,7 +16,7 @@ class Login extends Component {
         }=this.props.navigation
         
         return ( 
-          <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: 150, height: 150, backgroundColor: 'blue'}}>   
+          <View style={{flex: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: 150, height: 100, backgroundColor: 'blue'}}>   
             <TextInput type="bordered" value={this.state.UserNameText} onChangeText={(text) => this.setState({UserNameText: text})} />
             <TextInput type="bordered" value={this.state.UserPassword} onChangeText={(text) => this.setState({UserPassword: text})} />
             <Button
@@ -43,6 +43,7 @@ export default Login;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center'
 

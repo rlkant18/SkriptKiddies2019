@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Entypo';
 import { connect } from 'react-redux';
-import { getCart } from '../selector';
+import { getCart, getTotal } from '../selector';
 import { colors, fonts } from '../../styles';
 
 import { Button, RadioGroup, Dropdown } from '../../components';
@@ -21,7 +21,7 @@ const uInfo = {
 class ComponentsScreen extends Component {
   constructor(props){
     super(props);
-    this.state = {total: 0}
+    this.state = {}
   }
 
   componentWillMount(){
@@ -29,7 +29,7 @@ class ComponentsScreen extends Component {
   }
 
   render() {
-    const { cart } = this.props;
+    const { cart, total } = this.props;
     return (
       <View
         style={styles.container}
@@ -59,8 +59,8 @@ class ComponentsScreen extends Component {
             <List cart={cart} />
           </ScrollView>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={{paddingTop: 15}}>Total</Text>
-            <Text style={{paddingTop: 15}}>Total</Text>
+            <Text style={[styles.componentSectionHeader,{paddingTop: 15, marginBottom: -5}]}>Total</Text>
+            <Text style={[styles.componentSectionHeader,{paddingTop: 15, marginBottom: -5}]}>${total.toFixed(2)}</Text>
           </View>
         </View>
         <Button 
@@ -359,6 +359,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => ({
   // selectors
   cart: getCart(state),
+  total: getTotal(state)
 });
 
 const mapDispatchToProps = {
