@@ -11,16 +11,15 @@ import {
   Dimensions,
   ScrollView
 } from 'react-native';
-import { connect } from 'react-redux';
-import { Button , RadioGroup, GridRow } from '../../components';
+import { Button } from '../../components';
 
+import { connect } from 'react-redux';
 import { colors, fonts } from '../../styles';
 import FoodModal from '../components/FoodModal';
 import { addItemsToState, addItemToCart } from '../../redux/FoodItemsDucks';
 import { getItems } from '../selector';
 
-
-
+import { RadioGroup, GridRow } from '../../components';
 console.disableYellowBox = true;
 class GridsScreen extends React.Component {
   listData = [
@@ -71,7 +70,6 @@ class GridsScreen extends React.Component {
 
     this.item = {}
   }
-
   _getRenderItemFunction = () =>
     [this.renderRowOne,this.renderRowTwo,this.renderRowThree][
       this.props.tabIndex
@@ -139,15 +137,17 @@ class GridsScreen extends React.Component {
         ? GridRow.groupByRows(items, 2)
         : items;
     if (this.state.modalVisible) return (
-      <FoodModal 
-        item={this.item}
-        onCancel={(visible) => this.setModalVisible(visible)}
-        onSubmit={() => {
+    <FoodModal 
+      item={this.item}
+      onCancel={(visible) => this.setModalVisible(visible)}
+      onSubmit={(quantity) => {
+        const obj = Object.assign({}, this.item)
+        obj.quantity = quantity || 1;
         this.setModalVisible(false)
-        this.props.addItemToCart(this.item)
+        this.props.addItemToCart(obj)
       }
       }
-      />
+    />
     )
     // console.error(items)
     return (
@@ -176,8 +176,7 @@ class GridsScreen extends React.Component {
           secondary
           rounded
           title="Hello"
-          caption="Checkout"
-        />
+          caption="Checkout" />
       </View>
     );
   }
