@@ -30,14 +30,14 @@ class Login extends Component {
             type="bordered"
             style={styles.background}
             // style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-            placeholder="Cafe Rewards Card Number or Email"
+            placeholder="  Cafe Rewards Card Number or Email"
             value={this.state.UserNameText}
             onChangeText={text => this.setState({ UserNameText: text })}
           />
           <TextInput
             type="bordered"
             style={styles.background}
-            placeholder="Password"
+            placeholder="  Password"
             value={this.state.UserPassword}
             onChangeText={text => this.setState({ UserPassword: text })}
           />
@@ -46,6 +46,7 @@ class Login extends Component {
             style={styles.Button}
             secondary
             rounded
+            color="white"
             title="Log In"
             caption="Checkout"
           />
@@ -54,7 +55,8 @@ class Login extends Component {
             style={styles.Button}
             secondary
             rounded
-            title="Forgotten Password"
+            color="white"
+            title="Forgot Password"
             caption="Checkout"
           />
         </View>
@@ -73,12 +75,6 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    borderRadius: 90,
-  },
-  Button: {
-    color: 'red',
-    marginTop: 20,
-    padding: 20,
-    backgroundColor: 'green',
+    borderRadius: 70,
   },
 });

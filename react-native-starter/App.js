@@ -3,6 +3,7 @@ import React from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { PersistGate } from 'redux-persist/integration/react';
 import { colors } from './src/styles';
+import Login from './src/containers/Login';
 
 import { store, persistor } from './src/redux/store';
 

@@ -14,13 +14,19 @@ import GalleryScreen from '../gallery/GalleryViewContainer';
 // import ChartsScreen from '../containers/ChartsScreen';
 
 import AvailableInFullVersion from '../availableInFullVersion/AvailableInFullVersionViewContainer';
-
+import Login from '../../containers/Login';
 import { colors, fonts } from '../../styles';
 
 const headerBackground = require('../../../assets/images/topBarBg.png');
 
 const stackNavigator = createStackNavigator(
   {
+    Login: {
+      screen: Login,
+      navigationOptions: {
+        header: null,
+      },
+    },
     Main: {
       screen: MainTabNavigator,
       navigationOptions: () => ({

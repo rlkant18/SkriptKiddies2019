@@ -12,14 +12,13 @@ import PagesScreen from '../pages/PagesViewContainer';
 import ComponentsScreen from '../components/ComponentsViewContainer';
 import Login from '../../containers/Login';
 import ForgotPassword from '../../containers/ForgotPassword';
-import AvailableInFullVersionView from "../availableInFullVersion/AvailableInFullVersionView"
+import AvailableInFullVersionView from '../availableInFullVersion/AvailableInFullVersionView';
 
 const iconHome = require('../../../assets/images/tabbar/home.png');
 const iconCalendar = require('../../../assets/images/tabbar/calendar.png');
 const iconGrids = require('../../../assets/images/tabbar/grids.png');
 const iconPages = require('../../../assets/images/tabbar/pages.png');
 const iconComponents = require('../../../assets/images/tabbar/components.png');
-
 
 const hederBackground = require('../../../assets/images/topBarBg.png');
 
@@ -101,8 +100,20 @@ export default createBottomTabNavigator(
     //     ),
     //   },
     // },
-    Login: {
-      screen: Login,
+    // Login: {
+    //   screen: Login,
+    //   navigationOptions: {
+    //     header: (
+    //       <View style={styles.headerContainer}>
+    //         <Image style={styles.headerImage} source={hederBackground} />
+    //         <Text style={styles.headerCaption}>Components</Text>
+    //       </View>
+    //     ),
+    //   },
+    // },
+
+    Checkout: {
+      screen: ComponentsScreen,
       navigationOptions: {
         header: (
           <View style={styles.headerContainer}>
@@ -123,17 +134,6 @@ export default createBottomTabNavigator(
         ),
       },
     },
-    Checkout: {
-      screen: ComponentsScreen,
-      navigationOptions: {
-        header: (
-          <View style={styles.headerContainer}>
-            <Image style={styles.headerImage} source={hederBackground} />
-            <Text style={styles.headerCaption}>Components</Text>
-          </View>
-        ),
-      },
-    },
     // ForgotPassword: {
     //   screen: ForgotPassword,
     //   navigationOptions: {
@@ -145,7 +145,6 @@ export default createBottomTabNavigator(
     //     ),
     //   },
     // },
-    
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
