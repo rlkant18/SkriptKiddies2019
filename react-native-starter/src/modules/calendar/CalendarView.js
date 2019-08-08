@@ -31,7 +31,7 @@ class CalendarScreen extends React.Component {
             borderRadius: 3,
           }}
         >
-          <Text style={{ color: 'white' }}>Brad</Text>
+          <Text style={{ color: 'white' }}>{label}</Text>
         </View>
       ));
 

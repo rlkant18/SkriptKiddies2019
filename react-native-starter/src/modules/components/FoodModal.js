@@ -5,6 +5,11 @@ import { Button, RadioGroup, Dropdown } from '../../components';
 export default class FoodModal extends Component {
   // this.props.onCancel(false)
 
+  onSelect = (value) => {
+    console.error(value)
+  }
+  
+
   render() {
     const {
       container,
@@ -35,7 +40,7 @@ export default class FoodModal extends Component {
 
               <Dropdown
                 style={{ width: 200, alignSelf: 'center' }}
-                onSelect={() => {}}
+                onSelect={() => this.onSelect}
                 items={['1', '2', '3', '4', '5']}
               />
             </View>
