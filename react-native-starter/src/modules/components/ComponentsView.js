@@ -87,7 +87,7 @@ class ComponentsScreen extends Component {
             <List cart={cart} />
           </ScrollView>
         </View>
-
+        <Button />
         {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Action Buttons</Text>
 

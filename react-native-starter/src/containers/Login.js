@@ -6,24 +6,37 @@ import { TextInput } from '../components';
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = { };
     }
 
     render() { 
-       
+        
+        const {
+            navigate
+        }=this.props.navigation
+        
         return ( 
-          <View>   
-            <TextInput style={styles.container} />
-            <TextInput style={styles.container} />
+          <View style={styles.container}>   
+            <TextInput type="bordered" UserName />
+            <TextInput type="bordered" Password />
+            <Button
+              onPress={() => navigate('Home')}
+              style={styles.demoButton}
+              secondary
+              rounded
+              title="Log In"
+              caption="Checkout" 
+            />
           </View>
-         );
+           );
+        }
     }
-}
- 
 export default Login;
-
 const styles = StyleSheet.create({
     container: {
-    padding: 5
-    },
-})// // // // // // 
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+
+    }   
+}) 

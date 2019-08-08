@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   bordered: {
     borderWidth: 0.5,
-    borderColor: 'purple',
+    borderColor: colors.lightGray,
     borderRadius: 20,
     paddingHorizontal: 20,
   },

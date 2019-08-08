@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import Table from 'react-native-simple-table';
 import { Button} from '../../components';
 
 const List = (props) => (
@@ -10,31 +11,56 @@ const List = (props) => (
 //       </ScrollView>
 //     </View>
 //   </React.Fragment>
-  <ScrollView contentContainerStyle={styles.item}>
+//   <ScrollView contentContainerStyle={[styles.item, {flexDirection:'column'}]}>
+//     <table>
+//       <tbody>
+//         {props.cart.map((item) => (
+//           <tr>
+//             <td><Text>{item.title}</Text></td>
+//             <td><Text>{item.priceInt}</Text></td>
+//             <td>     <Button
+//               style={{fontSize: 10}}
+//               action
+//               caption="X"
+//               bgColor="transparent"
+//               color="red"
+//               onPress={() => {}}
+//               small
+//               cartScreen
+//             />
+//             </td>
+//           </tr>
+//              ))}
+//       </tbody>
+//     </table>
+   
+//   </ScrollView>
+  <ScrollView contentContainerStyle={[styles.item, {flexDirection:'column'}]}>
     {props.cart.map((item) => (
       <React.Fragment>
-        <View>
+        <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
           <Text
             style={{
-              color: '#48506B',
-              marginBottom: 10,
-            }}
+            color: '#48506B',
+            marginBottom: 10,
+            flex: .6
+        }}
           >
             {item.title}
           </Text>
-        </View>
 
-        <View styleName="horizontal h-start"><Text>${`${item.priceInt}`}</Text></View>
-        <Button
-          style={{fontSize: 10}}
-          action
-          caption="X"
-          bgColor="transparent"
-          color="red"
-          onPress={() => {}}
-          small
-          cartScreen
-        />
+          <Text style={{flex:.15}} styleName="horizontal h-start">${`${item.priceInt}`}</Text>
+          <Button
+            style={{fontSize: 10, flex: .01}}
+            action
+            caption="X"
+            bgColor="transparent"
+            color="red"
+            onPress={() => {}}
+            small
+            cartScreen
+          />
+        </View>
       </React.Fragment>
           ))}
   </ScrollView>
