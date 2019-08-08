@@ -5,9 +5,7 @@ import Table from 'react-native-simple-table';
 import { Button} from '../../components';
 import { removeItemFromCart } from '../../redux/FoodItemsDucks'
 
-format = (number) => {
-  return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-}
+format = (number) => number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
 const List = (props) => (
 //   <React.Fragment>
 //     <View style={{height: '50%', width: '100%', flex: 0, justifyContent: 'center', alignItems: 'center'}}>
@@ -54,14 +52,16 @@ const List = (props) => (
             {item.title}
           </Text>
 
-          <Text style={{flex:.15}} styleName="horizontal h-start">${`${format(item.priceInt)}`}</Text>
+          <Text style={{flex:.15}} styleName="horizontal h-start">${(item.priceInt.toFixed(2))}</Text>
+          <Text style={{flex:.15}} styleName="horizontal h-start">x{item.quantity}</Text>
+
           <Button
             style={{fontSize: 10, flex: .01}}
             action
             caption="X"
             bgColor="transparent"
             color="red"
-            onPress={() => props.onRemoveItemFromCart(index + 1)}
+            onPress={() => props.onRemoveItemFromCart(index, item.priceInt * item.quantity)}
             small
             cartScreen
           />

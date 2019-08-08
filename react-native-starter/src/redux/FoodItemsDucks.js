@@ -21,9 +21,16 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ACTIONS.REMOVE_ITEM_FROM_CART:
             // console.error('Worked2')
-            // alert(JSON.stringify(state.cart) + 'hello' + JSON.stringify(state.cart.slice(1)))
+            const arr = []
+            let i = 0;
+            while (i < state.cart.length) {
+                arr.push(state.cart[i++]);
+              }
+            arr.splice(action.index, 1)
+            // console.error(arr)
             return {...state,
-                cart: state.cart.slice(action.index)
+                cart: arr,
+                total: state.total - action.cost
             }
         case ACTIONS.ADD_ITEM_TO_CART:
             console.log(state.total);
@@ -55,10 +62,11 @@ export function addItemToCart(item) {
     }
 }
 
-export function removeItemFromCart(index) {
+export function removeItemFromCart(index, cost) {
     // console.error('Worked')
     return {
         type: ACTIONS.REMOVE_ITEM_FROM_CART,
-        index
+        index,
+        cost,
     }
 }

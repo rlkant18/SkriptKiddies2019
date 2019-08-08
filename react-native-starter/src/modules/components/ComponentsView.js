@@ -35,7 +35,8 @@ class ComponentsScreen extends Component {
 
   render() {
     const { cart, total } = this.props;
-    if(this.state.modalVisible) return <PaymentModal 
+    if(this.state.modalVisible) return (
+<PaymentModal 
       onCancel={(visible) => this.setModalVisible(visible)}
       onSubmit={(form) => {
         if(form.values.type !== 'american-express'){
@@ -49,6 +50,7 @@ class ComponentsScreen extends Component {
         }
       }}
     />
+)
     return (
       <View
         style={styles.container}
