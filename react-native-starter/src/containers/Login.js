@@ -28,7 +28,7 @@ class Login extends Component {
       >
         <Text style={styles.titleText}>Amex Café Ordering</Text>
 
-        <View style={{ marginTop: 0 }}>
+        <View style={{}}>
           <TextInput
             type="bordered"
             style={styles.background}
@@ -62,12 +62,14 @@ class Login extends Component {
             title="Forgot Password"
             caption="Checkout"
           />
+          
           <Image
             style={{
               width: '100%',
               height: '15%',
               alignContent: 'center',
-              marginBottom: '0%',
+              marginTop: 100,
+              paddingTop: 20,
             }}
             source={require('../../assets/images/orderWhite.png')}
           />
@@ -99,6 +101,7 @@ const styles = StyleSheet.create({
     margin: 50,
     height: '20%',
     width: '100%',
+    marginTop: 120,
     // justifyContent: 'center',
     // alignItems: 'stretch',
     // flexDirection: 'row',
