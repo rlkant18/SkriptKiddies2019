@@ -43,6 +43,7 @@ class Login extends Component {
             placeholder="  Password"
             value={this.state.UserPassword}
             onChangeText={text => this.setState({ UserPassword: text })}
+            secureTextEntry
           />
           <Button
             onPress={() => navigate('Home')}
@@ -62,7 +63,7 @@ class Login extends Component {
             title="Forgot Password"
             caption="Checkout"
           />
-          
+
           <Image
             style={{
               width: '100%',
