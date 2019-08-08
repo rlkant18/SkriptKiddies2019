@@ -14,7 +14,7 @@ import List from "../checkout/List";
 const uInfo = {
   name: "John Doe",
   location: "Amex-Sunrise",
-  time: "The Right Moment"
+  time: "12:15 PM"
 }
 
 
@@ -88,6 +88,7 @@ class ComponentsScreen extends Component {
         <Button 
           caption='Purchase'
           onPress={() => this.setModalVisible(true)}
+          bgColor="#2E77BB"
         />
         {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Action Buttons</Text>

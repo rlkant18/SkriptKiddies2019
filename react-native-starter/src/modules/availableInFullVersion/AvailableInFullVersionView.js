@@ -33,11 +33,7 @@ export default function AvailableInFullVersionScreen(props) {
         style={styles.nerdImage}
       />
 
-      <View style={styles.textContainer}>
-        <Text style={styles.availableText}>Available</Text>
-        <Text style={styles.availableText}>in</Text>
-        <Text style={styles.availableText}>Full Version</Text>
-      </View>
+      <View style={styles.textContainer} />
 
       <View style={styles.buttonsContainer}>
         <Button

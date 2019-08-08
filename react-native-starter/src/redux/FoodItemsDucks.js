@@ -22,7 +22,7 @@ export default function reducer(state = initialState, action) {
             console.log(action.item.priceInt);
             return {...state,
                 cart: [...state.cart, action.item],
-                total: state.total + action.item.priceInt
+                total: state.total + (action.item.quantity * action.item.priceInt)
             }
         case ACTIONS.ADD_ITEM_TO_STATE:
             return {...state,

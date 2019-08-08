@@ -14,7 +14,7 @@ class UserInfo extends Component {
         return ( 
           <View>   
             
-            <Text style={styles.container}> {name} </Text>
+            <Text style={[styles.container, {fontWeight: '700'}]}> {name} </Text>
             <Text style={styles.container}> {location} </Text>
             <Text style={styles.container}> {time} </Text>
           </View>
