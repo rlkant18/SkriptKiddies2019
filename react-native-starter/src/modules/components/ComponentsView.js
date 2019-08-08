@@ -19,12 +19,12 @@ const uInfo = {
 
 
 class ComponentsScreen extends Component {
+
   constructor(props){
     super(props);
     this.state = {}
   }
-
-  componentWillMount(){
+state = {};ponentWillMount(){
     console.log(this.props)
   }
 
