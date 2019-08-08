@@ -1,5 +1,11 @@
 const ITEMS_LOADED = 'CalendarState/ITEMS_LOADED';
 
+function refresh() {
+  return {
+    type: "default",
+  };
+}
+
 function itemsLoaded(items) {
   return {
     type: ITEMS_LOADED,
@@ -7,10 +13,10 @@ function itemsLoaded(items) {
   };
 }
 
-const names = ['Max', 'Philip', 'Alex', 'Irina', 'Vovan'];
+const names = ['Grilled Chicken Sandwich', 'Grilled Salmon', 'Grilled Salmon Meal'];
 const randomNumber = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
-const labels = ['Urgent', 'Interview'];
+const labels = ['Predicted', 'Scheduled'];
 
 export function loadItems(day) {
   // Do items loading here
@@ -24,12 +30,12 @@ export function loadItems(day) {
       const strTime = new Date(time).toISOString().split('T')[0];
       if (!items[strTime]) {
         items[strTime] = [];
-        const numItems = randomNumber(0, 5);
+        const numItems = 1;
         for (let j = 0; j < numItems; j += 1) {
           items[strTime].push({
-            name: `Meeting with ${names[randomNumber(0, 4)]}`,
-            time: `${randomNumber(0, 24)}:${randomNumber(0, 60)}`,
-            labels: randomNumber(0, 1) ? [labels[randomNumber(0, 1)]] : [],
+            name: `${names[randomNumber(0, 2)]}`,
+            time: `${randomNumber(12, 12)}:${randomNumber(10, 18)}`,
+            labels: randomNumber(1, 1) ? [labels[randomNumber(0, 1)]] : [],
           });
         }
       }
@@ -41,7 +47,7 @@ export function loadItems(day) {
     });
 
     console.log(newItems);
-
+    dispatch(refresh());
     dispatch(itemsLoaded(newItems));
   };
 }
@@ -59,6 +65,6 @@ export default function CalendarStateReducer(state = defaultState, action) {
         items: action.items,
       });
     default:
-      return state;
+      return defaultState;
   }
 }

@@ -11,6 +11,8 @@ import {
   Dimensions,
   ScrollView
 } from 'react-native';
+import { Button } from '../../components';
+
 import { connect } from 'react-redux';
 import { colors, fonts } from '../../styles';
 import FoodModal from '../components/FoodModal';
@@ -18,7 +20,7 @@ import { addItemsToState, addItemToCart } from '../../redux/FoodItemsDucks';
 import { getItems } from '../selector';
 
 import { RadioGroup, GridRow } from '../../components';
-console.disableYellowBox = true;
+// console.disableYellowBox = true;
 class GridsScreen extends React.Component {
   listData = [
     {
@@ -125,6 +127,11 @@ class GridsScreen extends React.Component {
     const {
       items
     } = this.props
+
+    const {
+      navigate
+    } = this.props.navigation;
+
     const groupedData =
       this.props.tabIndex === 0
         ? GridRow.groupByRows(items, 2)
@@ -143,7 +150,7 @@ class GridsScreen extends React.Component {
     // console.error(items)
     return (
       <View style={styles.container}>
-        <View style={{ height: 50, flex: .2 }}>
+        <View style={{ height: 50, flex: .1 }}>
           <RadioGroup
             selectedIndex={this.props.tabIndex}
             items={this.props.tabs}
@@ -161,6 +168,13 @@ class GridsScreen extends React.Component {
           data={groupedData}
           renderItem={this._getRenderItemFunction()}
         />
+        <Button
+          onPress={() => navigate('Components')}
+          style={styles.demoButton}
+          secondary
+          rounded
+          title="Hello"
+          caption="Checkout" />
       </View>
     );
   }
@@ -178,6 +192,11 @@ const styles = StyleSheet.create({
   itemOneContainer: {
     flex: 1,
     width: Dimensions.get('window').width / 2 - 40,
+  },
+  demoButton: {
+    flex: .08,
+    margin: 2,
+    marginHorizontal: 4,
   },
   itemOneImageContainer: {
     borderRadius: 3,

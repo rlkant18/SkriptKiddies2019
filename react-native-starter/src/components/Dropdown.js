@@ -64,7 +64,7 @@ class RNSDropDown extends React.Component {
             <Text style={{ color }}>{text}</Text>
           </View>
         )}
-        onSelect={onSelect}
+        onSelect={onSelect(items[selectedIndex])}
       >
         <View style={[styles.container, style && style, { borderColor }]}>
           <Text style={{ color }}>

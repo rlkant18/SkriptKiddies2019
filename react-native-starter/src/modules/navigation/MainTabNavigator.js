@@ -77,7 +77,7 @@ export default createBottomTabNavigator(
         ),
       },
     },
-    Grids: {
+    Menu: {
       screen: GridsScreen,
       navigationOptions: {
         header: (
@@ -135,7 +135,7 @@ export default createBottomTabNavigator(
           case 'Calendar':
             iconSource = iconCalendar;
             break;
-          case 'Grids':
+          case 'Menu':
             iconSource = iconGrids;
             break;
           case 'Pages':
