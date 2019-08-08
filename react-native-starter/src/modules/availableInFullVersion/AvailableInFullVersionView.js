@@ -8,6 +8,7 @@ import {
   Linking,
 } from 'react-native';
 
+
 import { fonts, colors } from '../../styles';
 import { Button } from '../../components';
 
@@ -66,13 +67,24 @@ export default function AvailableInFullVersionScreen(props) {
             <Text>Email: John.Doe@aexp.com</Text>
             <Text>Preferred Time: 12:15 PM</Text>
           </View>
+          <View />
+        </View>
+        <View style={styles.componentsSection}>
+          <Text style={styles.componentSectionHeader}>Payment Info</Text>
           <Button
-            large
-            style={styles.button}
-            caption="Later"
-            onPress={() => props.navigation.goBack()}
-            bgColor='red'
+            style={styles.demoButton}
+            action
+            caption="Edit"
+            bgColor="transparent"
+            color="#2E77BB"
+            onPress={() => {}}
           />
+          <View style={{justifyContent: 'flex-start'}}>
+            <Text>Name: John Doe</Text>
+            <Text>Card Number: XXXX-XXXX-XXXX-3910</Text>
+            <Text>Expiration Date: 12/19</Text>
+            <Text>Billing Address: 1500 NW 136th Ave, Sunrise, FL 33323</Text>
+          </View>
           <View />
         </View>
       </View>
@@ -88,7 +100,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 50,
     justifyContent: 'space-around',
-    backgroundColor: '#2E77BB'
+    backgroundColor: colors.bluish
   },
   containerThing: {
     flex: 1,
@@ -122,7 +134,7 @@ const styles = StyleSheet.create({
   componentsSection: {
     backgroundColor: colors.white,
     padding: 10,
-    marginBottom: 200,
+    // marginBottom: 200,
     borderRadius: 5,
     textAlign: 'center',
   },
