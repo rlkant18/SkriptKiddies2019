@@ -1,56 +1,84 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
-import { TextInput } from '../components';
-
-
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  ImageBackground,
+  TextInput,
+} from 'react-native';
 
 class Login extends Component {
-  
-    constructor(props) {
-        super(props);
-        this.state = { UserNameText: 'Cafe Rewards Card Number or Email' };
-        this.state = { UserPassword: 'Password' };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      UserNameText: null,
+      UserPassword: null,
+    };
+  }
 
-    render() { 
-        const {
-            navigate
-        }=this.props.navigation
-        
-        return ( 
-          
-          <View style={StyleSheet}>  
-            <TextInput type="bordered" value={this.state.UserNameText} onChangeText={(text) => this.setState({UserNameText: text})} />
-            <TextInput type="bordered" value={this.state.UserPassword} onChangeText={(text) => this.setState({UserPassword: text})} />
-            <Button
-              onPress={() => navigate('Home')}
-              style={styles.demoButton}
-              secondary
-              rounded
-              title="Log In"
-              caption="Checkout" 
-            />
-            <Button
-              onPress={() => navigate('ForgotPassword')}
-              style={styles.demoButton}
-              secondary
-              rounded
-              title="Forgotten Password"
-              caption="Checkout" 
-            />
-          </View>
-           );
-        }
-    }
+  render() {
+    const { navigate } = this.props.navigation;
+
+    return (
+      <ImageBackground
+        style={{ width: '100%', height: '100%' }}
+        source={require('../../assets/images/amex.png')}
+      >
+        <View style={{ marginTop: 225 }}>
+          <TextInput
+            type="bordered"
+            style={styles.background}
+            // style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            placeholder="Cafe Rewards Card Number or Email"
+            value={this.state.UserNameText}
+            onChangeText={text => this.setState({ UserNameText: text })}
+          />
+          <TextInput
+            type="bordered"
+            style={styles.background}
+            placeholder="Password"
+            value={this.state.UserPassword}
+            onChangeText={text => this.setState({ UserPassword: text })}
+          />
+          <Button
+            onPress={() => navigate('Home')}
+            style={styles.Button}
+            secondary
+            rounded
+            title="Log In"
+            caption="Checkout"
+          />
+          <Button
+            onPress={() => navigate('ForgotPassword')}
+            style={styles.Button}
+            secondary
+            rounded
+            title="Forgotten Password"
+            caption="Checkout"
+          />
+        </View>
+      </ImageBackground>
+    );
+  }
+}
 export default Login;
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: 100,
-      height: 75
-
-    }   
-}) 
+  container: {
+    flex: 1,
+  },
+  background: {
+    backgroundColor: '#fff',
+    margin: 10,
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 90,
+  },
+  Button: {
+    color: 'red',
+    marginTop: 20,
+    padding: 20,
+    backgroundColor: 'green',
+  },
+});
