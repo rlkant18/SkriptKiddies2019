@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component} from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Entypo';
+import { connect } from 'react-redux';
+import { getCart } from '../selector';
 import { colors, fonts } from '../../styles';
 
 import { Button, RadioGroup, Dropdown } from '../../components';
@@ -14,29 +16,43 @@ const uInfo = {
   time: "The Right Moment"
 }
 
-export default function ComponentsScreen(props) {
-  return (
-    <View
-      style={styles.container}
-      contentContainerStyle={{ paddingBottom: 20 }}
-    >
-      <View style={styles.componentsSection}>
-         
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={styles.componentSectionHeader}>Order Info</Text>
-          <Button
-            style={styles.demoButton}
-            action
-            caption="Edit"
-            bgColor="#2E77BB"
-            onPress={() => {}}
-          />
-        </View>
-        <View>
-          <UserInfo info={uInfo} /> 
-        </View>
 
-        {/* 
+
+class ComponentsScreen extends Component {
+  constructor(props){
+    super(props);
+    state = {}
+  }
+
+  componentWillMount(){
+    console.log(this.props)
+  }
+
+  render() {
+    const { cart } = this.props;
+    return (
+      <View
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 20 }}
+      >
+        <View style={styles.componentsSection}>
+         
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={styles.componentSectionHeader}>Order Info</Text>
+            <Button
+              style={styles.demoButton}
+              action
+              caption="Edit"
+              bgColor="transparent"
+              color="#2E77BB"
+              onPress={() => {}}
+            />
+          </View>
+          <View>
+            <UserInfo info={uInfo} /> 
+          </View>
+
+          {/* 
         <RadioGroup
           style={styles.demoItem}
           items={['One', 'Two', 'Three']}
@@ -63,16 +79,16 @@ export default function ComponentsScreen(props) {
             props.setRadioGroupsState({ ...props.radioGroupsState, 1: index })
           }
         /> */}
-      </View>
+        </View>
 
-      <View style={styles.cartSection}>
-        <Text style={styles.componentSectionHeader}>Cart</Text>
-        <ScrollView>
-          <List cart={[{name: 'Burger', price: 100}]} />
-        </ScrollView>
-      </View>
+        <View style={styles.cartSection}>
+          <Text style={styles.componentSectionHeader}>Cart</Text>
+          <ScrollView>
+            <List cart={cart} />
+          </ScrollView>
+        </View>
 
-      {/* <View style={styles.componentsSection}>
+        {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Action Buttons</Text>
 
         <View style={styles.demoButtonsContainer}>
@@ -139,7 +155,7 @@ export default function ComponentsScreen(props) {
         </View>
       </View> */}
 
-      {/* <View style={styles.componentsSection}>
+        {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Icons</Text>
 
         <View style={styles.demoIconsContainer}>
@@ -298,7 +314,7 @@ export default function ComponentsScreen(props) {
         />
       </View> */}
 
-      {/* <View style={styles.componentsSection}>
+        {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Dropdown</Text>
 
         <Dropdown
@@ -307,8 +323,9 @@ export default function ComponentsScreen(props) {
           items={['option 1', 'option 2']}
         />
       </View> */}
-    </View>
-  );
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -360,3 +377,14 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
 });
+
+const mapStateToProps = (state) => ({
+  // selectors
+  cart: getCart(state),
+});
+
+const mapDispatchToProps = {
+  // actions
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentsScreen);

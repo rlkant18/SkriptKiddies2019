@@ -142,7 +142,7 @@ class GridsScreen extends React.Component {
       onCancel={(visible) => this.setModalVisible(visible)}
       onSubmit={(quantity) => {
         const obj = Object.assign({}, this.item)
-        obj.quantity = quantity;
+        obj.quantity = quantity || 1;
         this.setModalVisible(false)
         this.props.addItemToCart(obj)
       }

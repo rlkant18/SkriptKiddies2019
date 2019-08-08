@@ -20,21 +20,22 @@ const List = (props) => (
               marginBottom: 10,
             }}
           >
-            {item.name}
+            {item.title}
           </Text>
           <Text style={{ color: '#9B9B9B' }}>
             {item.time}
           </Text>
         </View>
 
-        <View styleName="horizontal h-start"><Text>${`${item.price}`}</Text></View>
+        <View styleName="horizontal h-start"><Text>${`${item.priceInt}`}</Text></View>
         <Button
           style={{fontSize: 10}}
           action
           caption="X"
-          bgColor="#FFFFFF"
+          bgColor="transparent"
           color="red"
           onPress={() => {}}
+          small
         />
       </React.Fragment>
           ))}
