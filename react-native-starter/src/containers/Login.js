@@ -16,7 +16,7 @@ class Login extends Component {
         }=this.props.navigation
         
         return ( 
-          <View style={styles.container}>   
+          <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: 150, height: 150, backgroundColor: 'blue'}}>   
             <TextInput type="bordered" value={this.state.UserNameText} onChangeText={(text) => this.setState({UserNameText: text})} />
             <TextInput type="bordered" value={this.state.UserPassword} onChangeText={(text) => this.setState({UserPassword: text})} />
             <Button

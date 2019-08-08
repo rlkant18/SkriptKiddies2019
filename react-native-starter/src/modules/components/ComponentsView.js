@@ -21,7 +21,7 @@ const uInfo = {
 class ComponentsScreen extends Component {
   constructor(props){
     super(props);
-    state = {}
+    this.state = {total: 0}
   }
 
   componentWillMount(){
