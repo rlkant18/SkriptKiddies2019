@@ -17,20 +17,23 @@ export default class FoodModal extends Component {
     this.quantity = value;
   }
   
-
+  format = (number) => {
+    return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  }
   render() {
-    const {
-      container,
-      containerOuter
-    } = styles;
-    // console.error(this.props.items)
-
-    const {
+   const {
       title,
       subtitle,
       price,
+      priceInt,
       image,
     } = this.props.item
+
+    const {
+      container,
+      containerOuter,
+    } = styles
+
     return (
       <Modal
         animationType="slide"
@@ -53,6 +56,7 @@ export default class FoodModal extends Component {
                 selectedIndex={this.selectedIndex}
                 value={this.quantity}
               />
+              <Text style={{fontSize: 15, marginTop: 60, textAlign: 'center'}}>${this.format(priceInt * this.quantity)}</Text>
             </View>
 
             <View style={{flexDirection:'row', flex: .1}}>

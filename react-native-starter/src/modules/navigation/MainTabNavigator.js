@@ -122,17 +122,17 @@ export default createBottomTabNavigator(
         ),
       },
     },
-    ForgotPassword: {
-      screen: ForgotPassword,
-      navigationOptions: {
-        header: (
-          <View style={styles.headerContainer}>
-            <Image style={styles.headerImage} source={hederBackground} />
-            <Text style={styles.headerCaption}>Components</Text>
-          </View>
-        ),
-      },
-    },
+    // ForgotPassword: {
+    //   screen: ForgotPassword,
+    //   navigationOptions: {
+    //     header: (
+    //       <View style={styles.headerContainer}>
+    //         <Image style={styles.headerImage} source={hederBackground} />
+    //         <Text style={styles.headerCaption}>Components</Text>
+    //       </View>
+    //     ),
+    //   },
+    // },
     
   },
   {

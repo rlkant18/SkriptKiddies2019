@@ -59,6 +59,42 @@ class GridsScreen extends React.Component {
       image:
         'https://www.cookingclassy.com/wp-content/uploads/2016/09/grilled_salmon_avocado_greek_salsa4crop..jpg',
     },
+    {
+      id: 4,
+      brand: 'Citizen',
+      title: 'Chicken Tenders',
+      subtitle: '460 Calories',
+      price: '$4.95',
+      priceInt: 4.95,
+      badge: 'NEW',
+      badgeColor: '#3cd39f',
+      image:
+        'https://i2.wp.com/butterwithasideofbread.com/wp-content/uploads/2018/08/Easy-Chicken-Tenders-Recipe-8.bwb_.jpg?fit=750%2C1125&ssl=1',
+    },
+    {
+      id: 5,
+      brand: 'Citizen',
+      title: 'Sweet Potato Fries',
+      subtitle: '210 Calories',
+      price: '$1.80',
+      priceInt: 1.80,
+      badge: 'NEW',
+      badgeColor: '#3cd39f',
+      image:
+        'https://www.primaverakitchen.com/wp-content/uploads/2018/04/Spicy-Baked-Sweet-Potato-Fries-Primavera-Kitchen-1.jpg',
+    },
+    {
+      id: 6,
+      brand: 'Citizen',
+      title: 'French Fries',
+      subtitle: '230 Calories',
+      price: '$1.50',
+      priceInt: 1.50,
+      badge: 'NEW',
+      badgeColor: '#3cd39f',
+      image:
+        'https://platedcravings.com/wp-content/uploads/2018/08/Air-Fryer-French-Fries-Plated-Cravings-6.jpg',
+    },
   ];
 
   constructor(props) {
