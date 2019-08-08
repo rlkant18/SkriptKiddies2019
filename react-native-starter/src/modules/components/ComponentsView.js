@@ -7,6 +7,7 @@ import { getCart, getTotal } from '../selector';
 import { colors, fonts } from '../../styles';
 
 import { Button, RadioGroup, Dropdown } from '../../components';
+import PaymentModal from './PaymentModal'
 import UserInfo from '../../components/UserInfo';
 import List from "../checkout/List";
 
@@ -22,14 +23,35 @@ class ComponentsScreen extends Component {
 
   constructor(props){
     super(props);
-    this.state = {}
+    this.state = {
+      modalVisible: false,
+    }
   }
-state = {};ponentWillMount(){
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
+  componentWillMount(){
     console.log(this.props)
   }
 
   render() {
     const { cart, total } = this.props;
+    if(this.state.modalVisible) return <PaymentModal 
+      onCancel={(visible) => this.setModalVisible(visible)}
+      onSubmit={(form) => {
+        if(form.values.type !== 'american-express'){
+          console.error('Sorry we do not accept inferior cards')
+        }
+        else{
+          this.setModalVisible(false)
+          setTimeout(() => {
+            alert('Purchase has been placed')
+          }, 500)
+        }
+      }}
+    />
     return (
       <View
         style={styles.container}
@@ -60,11 +82,12 @@ state = {};ponentWillMount(){
           </ScrollView>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={[styles.componentSectionHeader,{paddingTop: 15, marginBottom: -5}]}>Total</Text>
-            <Text style={[styles.componentSectionHeader,{paddingTop: 15, marginBottom: -5}]}>${total.toFixed(2)}</Text>
+            <Text style={[styles.componentSectionHeader,{paddingTop: 15, marginBottom: -5}]}>${total}</Text>
           </View>
         </View>
         <Button 
           caption='Purchase'
+          onPress={() => this.setModalVisible(true)}
         />
         {/* <View style={styles.componentsSection}>
         <Text style={styles.componentSectionHeader}>Action Buttons</Text>
