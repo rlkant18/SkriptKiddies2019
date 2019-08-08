@@ -4,9 +4,14 @@ import { Button, RadioGroup, Dropdown } from '../../components';
 
 export default class FoodModal extends Component {
   // this.props.onCancel(false)
+  constructor(props) {
+    super(props)
+
+    this.quantity
+  }
 
   onSelect = (value) => {
-    console.error(value)
+    this.quantity = value;
   }
   
 
@@ -54,7 +59,7 @@ export default class FoodModal extends Component {
                 caption = "Cancel"/>
 
                 <Button
-                onPress={() => this.props.onSubmit()}
+                onPress={() => this.props.onSubmit(this.quantity)}
                 style={styles.demoButton}
                 secondary
                 rounded
