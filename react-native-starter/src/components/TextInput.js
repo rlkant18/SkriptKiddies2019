@@ -37,7 +37,7 @@ const HEIGHT = 40;
 const styles = StyleSheet.create({
   default: {
     height: HEIGHT,
-    color: 'white',
+    color: 'black',
     fontFamily: fonts.primaryRegular,
     ...Platform.select({
       android: {

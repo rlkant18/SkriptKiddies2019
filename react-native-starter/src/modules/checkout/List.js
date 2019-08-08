@@ -22,9 +22,6 @@ const List = (props) => (
           >
             {item.title}
           </Text>
-          <Text style={{ color: '#9B9B9B' }}>
-            {item.time}
-          </Text>
         </View>
 
         <View styleName="horizontal h-start"><Text>${`${item.priceInt}`}</Text></View>
@@ -36,6 +33,7 @@ const List = (props) => (
           color="red"
           onPress={() => {}}
           small
+          cartScreen
         />
       </React.Fragment>
           ))}

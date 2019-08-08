@@ -23,6 +23,8 @@ export default Login;
 
 const styles = StyleSheet.create({
     container: {
-    padding: 5
+    padding: 5,
+    width: 5,
+    color: 'black'
     },
 })

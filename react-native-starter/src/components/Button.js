@@ -109,7 +109,7 @@ export default function RNSButton(props) {
               icon && styles.captionWithIcon,
               styles.primaryCaption,
               {color: props.color || 'white'},
-              {marginBottom: 13}
+              props.cartScreen && {marginBottom: 13}
             ]}
           >
             {caption}
@@ -143,7 +143,7 @@ const HEIGHT_LARGE = 50;
 
 const styles = StyleSheet.create({
   container: {
-    // height: HEIGHT,
+    height: HEIGHT,
     // borderWidth: 1 / PixelRatio.get(),
   },
   containerSmall: {
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    // paddingHorizontal: 30,
+    paddingHorizontal: 30,
   },
   buttonSmall: {
     paddingHorizontal: 20,
@@ -169,10 +169,10 @@ const styles = StyleSheet.create({
   },
   primaryButton: {
     backgroundColor: 'transparent',
-    // borderRadius: 5,
+    borderRadius: 5,
   },
   rounded: {
-    // borderRadius: HEIGHT_LARGE / 2,
+    borderRadius: HEIGHT_LARGE / 2,
   },
   icon: {
     maxHeight: HEIGHT - 20,
@@ -198,11 +198,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   action: {
-    // borderRadius: 20,
-    // height: HEIGHT,
-    // width: HEIGHT,
-    // paddingHorizontal: 0,
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    borderRadius: 20,
+    height: HEIGHT,
+    width: HEIGHT,
+    paddingHorizontal: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
