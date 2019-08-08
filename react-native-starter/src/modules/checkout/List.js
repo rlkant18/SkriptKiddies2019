@@ -24,7 +24,7 @@ const List = (props) => (
           </Text>
         </View>
 
-        <View styleName="horizontal h-start"><Text>${`${item.priceInt}`}</Text></View>
+        <View styleName="horizontal h-start"><Text>${`${item.priceInt} x${item.quantity}`}</Text></View>
         <Button
           style={{fontSize: 10}}
           action

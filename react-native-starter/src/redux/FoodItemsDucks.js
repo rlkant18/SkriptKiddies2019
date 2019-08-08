@@ -9,12 +9,12 @@ const ACTIONS = {
 //     'ADD_ITEM_TO_CART'
 // ])
 
-const intialState = {
+const initialState = {
     items: [],
     cart: [],
 }
 
-export default function reducer(state = intialState, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ACTIONS.ADD_ITEM_TO_CART:
             return {...state,
@@ -25,7 +25,7 @@ export default function reducer(state = intialState, action) {
                 items: action.items
             }
         default:
-            return intialState;
+            return state;
     }
 }
 
